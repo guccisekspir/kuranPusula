@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ThemeHelper {
   Color backgroundColor = const Color(0XFFE6F2F6);
@@ -20,6 +21,22 @@ class ThemeHelper {
   static final ThemeHelper _themeHelper = ThemeHelper._internal();
 
   ThemeHelper._internal();
+
+  TextStyle get titleTextStyleDark {
+    return GoogleFonts.roboto(fontWeight: FontWeight.bold, color: onBackgroundDark);
+  }
+
+  TextStyle get titleTextStyleLight {
+    return GoogleFonts.roboto(fontWeight: FontWeight.bold, color: backgroundColor);
+  }
+
+  TextStyle get subtitleTextStyleDark {
+    return GoogleFonts.roboto(fontWeight: FontWeight.normal, color: onBackgroundDark);
+  }
+
+  TextStyle get subtitleTextStyleLight {
+    return GoogleFonts.roboto(fontWeight: FontWeight.normal, color: backgroundColor);
+  }
 
   factory ThemeHelper({BuildContext? fetchedContext}) {
     //LnadPage'de context'i verdiğimiz için sonraki yerlerde
