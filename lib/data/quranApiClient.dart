@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:kuranpusula/model/detailedSurah.dart';
 import 'package:kuranpusula/model/surah.dart';
 
 class QuranApiClient {
@@ -24,5 +25,20 @@ class QuranApiClient {
     }
 
     return [];
+  }
+
+  Future<DetailedSurah?> getDetailedSurah(int surahNumber) async {
+    Dio dio = Dio(getBaseOption());
+
+    try {
+      Response response = await dio.get('surah/$surahNumber');
+
+      DetailedSurah detailedSurahs = DetailedSurah.fromJson(jsonEncode(response.data["data"]));
+      return detailedSurahs;
+    } on DioError catch (error) {
+      debugPrint(error.toString());
+    }
+
+    return DetailedSurah();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:kuranpusula/data/quranApiClient.dart';
 import 'package:kuranpusula/locator.dart';
+import 'package:kuranpusula/model/detailedSurah.dart';
 import 'package:kuranpusula/model/surah.dart';
 
 class QuranRepository {
@@ -10,5 +11,9 @@ class QuranRepository {
   Future<List<Surah>> getSurahs() async {
     surahs ??= await quranApiClient.getSurahs();
     return surahs ?? [];
+  }
+
+  Future<DetailedSurah?> getDetailedSurah(int surahNumber) async {
+    return await quranApiClient.getDetailedSurah(surahNumber);
   }
 }

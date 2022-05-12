@@ -16,4 +16,8 @@ class HiveRepository {
   Future<Beads?> getLatestCachedFeeds() async {
     return await _hiveApiClient.getLatestCachedFeeds();
   }
+
+  Future<bool> deleteBeadsFromHive(Beads beads) async {
+    return await _hiveApiClient.deleteBeadsFromHive(beads);
+  }
 }

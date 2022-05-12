@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
+import 'package:kuranpusula/pages/beadsPage/beadsPage.dart';
 import 'package:kuranpusula/pages/homePage/widgets/beadsContainer.dart';
 import 'package:kuranpusula/pages/homePage/widgets/todayVerseContainer.dart';
+import 'package:kuranpusula/pages/quranPage/quranPage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,21 +49,31 @@ class HomePage extends StatelessWidget {
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
                   children: [
-                    HomeFeatureWidgets(
-                      containerHeight: sizeHelper.height! * 0.3,
-                      containerWidth: sizeHelper.width! * 0.4,
-                      title: 'Zikirler',
-                      subtitle: 'Zikir yapmaya başla >.',
-                      image: 'assets/icons/counter.png',
-                      gradientColors: [Color(0xff70b2d9), Color(0XFF39e5b6)],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => BeadsPage()));
+                      },
+                      child: HomeFeatureWidgets(
+                        containerHeight: sizeHelper.height! * 0.3,
+                        containerWidth: sizeHelper.width! * 0.4,
+                        title: 'Dua ve Zikir',
+                        subtitle: 'Zikir yapmaya başla >.',
+                        image: 'assets/icons/counter.png',
+                        gradientColors: [Color(0xff70b2d9), Color(0XFF39e5b6)],
+                      ),
                     ),
-                    HomeFeatureWidgets(
-                      containerHeight: sizeHelper.height! * 0.25,
-                      containerWidth: sizeHelper.width! * 0.4,
-                      title: 'Kuran',
-                      subtitle: 'Ayetleri İncele >.',
-                      image: 'assets/icons/quran.png',
-                      gradientColors: [Color(0XFFA182DF), Color(0xffDE99C0)],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => QuranPage()));
+                      },
+                      child: HomeFeatureWidgets(
+                        containerHeight: sizeHelper.height! * 0.25,
+                        containerWidth: sizeHelper.width! * 0.4,
+                        title: 'Kuran',
+                        subtitle: 'Ayetleri İncele >.',
+                        image: 'assets/icons/quran.png',
+                        gradientColors: [Color(0XFFA182DF), Color(0xffDE99C0)],
+                      ),
                     ),
                     HomeFeatureWidgets(
                       containerHeight: sizeHelper.height! * 0.2,

@@ -26,16 +26,16 @@ class HiveApiClient {
               if (element.bead == willSaveBead.bead) {
                 isAlreadySaved = element;
               }
-              if (isAlreadySaved != null) {
-                debugPrint("Zaten kaydedilmiş. update olaccak" + isAlreadySaved.id!.toString());
-                beadsBox.putAt(isAlreadySaved.id!, isAlreadySaved);
-              } else {
-                willSaveBead.id = beadsBox.keys.toList().last + 1;
-                willSaveBead.createdTime = DateTime.now();
-                debugPrint("Box boş değil, kaydedilmemiş. update olaccak" + willSaveBead.id!.toString());
+            }
+            if (isAlreadySaved != null) {
+              debugPrint("Zaten kaydedilmiş. update olaccak" + isAlreadySaved.id!.toString());
+              beadsBox.putAt(isAlreadySaved.id!, isAlreadySaved);
+            } else {
+              willSaveBead.id = beadsBox.keys.toList().last + 1;
+              willSaveBead.createdTime = DateTime.now();
+              debugPrint("Box boş değil, kaydedilmemiş. update olaccak" + willSaveBead.id!.toString());
 
-                beadsBox.add(willSaveBead);
-              }
+              beadsBox.add(willSaveBead);
             }
           }
         }
@@ -65,17 +65,31 @@ class HiveApiClient {
 
       return feedListe.toList();
     } else {
+      debugPrint("user Box çekilecekti ama boş");
       return [];
     }
   }
 
   Future<Beads?> getLatestCachedFeeds() async {
-    Box feedsBox = await Hive.openBox<Beads>('feeds');
+    Box feedsBox = await Hive.openBox<Beads>('beads');
 
     if (feedsBox.isNotEmpty) {
       return (feedsBox.getAt(feedsBox.keys.last) as Beads);
     } else {
       return null;
     }
+  }
+
+  Future<bool> deleteBeadsFromHive(Beads willDeleteBead) async {
+    Box feedsBox = await Hive.openBox<Beads>('beads');
+
+    if (willDeleteBead.id != null) {
+      debugPrint("E NUL DEĞİL SİLMESİ LAZIM");
+      await feedsBox.deleteAt(willDeleteBead.id!);
+    } else {
+      debugPrint("E NUL BU");
+    }
+
+    return true;
   }
 }
