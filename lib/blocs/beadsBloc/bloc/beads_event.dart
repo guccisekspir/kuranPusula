@@ -14,3 +14,15 @@ class SaveBeads extends BeadsEvent {
 }
 
 class GetUserBeads extends BeadsEvent {}
+
+class GetSelectedBeadsFromHive extends BeadsEvent {
+  final Beads selectedBeads;
+
+  const GetSelectedBeadsFromHive({required this.selectedBeads});
+}
+
+class DeleteBeads extends BeadsEvent {
+  final Beads willDeleteBead;
+
+  const DeleteBeads({required this.willDeleteBead});
+}

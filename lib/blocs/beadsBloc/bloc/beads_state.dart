@@ -32,3 +32,9 @@ class BeadsLoadError extends BeadsState {
 
   const BeadsLoadError({required this.message});
 }
+
+class SelectedBeadsFetched extends BeadsState {
+  final Beads hiveSavedBead;
+
+  const SelectedBeadsFetched({required this.hiveSavedBead});
+}
