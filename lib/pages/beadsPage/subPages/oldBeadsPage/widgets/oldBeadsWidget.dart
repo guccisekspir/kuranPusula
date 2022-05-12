@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:kuranpusula/blocs/beadsBloc/bloc/beads_bloc.dart';
 import 'package:kuranpusula/data/favoritesApiClient.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
@@ -7,21 +8,23 @@ import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/model/beads.dart';
 import 'package:kuranpusula/pages/beadsPage/consts/readyBeads.dart';
 
-class NewBeadWidget extends StatefulWidget {
+class OldBeadWidget extends StatefulWidget {
   final Beads currentBeads;
-  const NewBeadWidget({Key? key, required this.currentBeads}) : super(key: key);
+  const OldBeadWidget({Key? key, required this.currentBeads}) : super(key: key);
 
   @override
-  State<NewBeadWidget> createState() => _NewBeadWidgetState();
+  State<OldBeadWidget> createState() => _OldBeadWidgetState();
 }
 
-class _NewBeadWidgetState extends State<NewBeadWidget> {
+class _OldBeadWidgetState extends State<OldBeadWidget> {
   ThemeHelper themeHelper = ThemeHelper();
   SizeHelper sizeHelper = SizeHelper();
   late double containerHeight;
   late double containerWidth;
   late bool isFavorited;
   FavoritesApiClient favoritesApiClient = getIt<FavoritesApiClient>();
+
+  BeadsBloc beadsBloc = getIt<BeadsBloc>();
 
   @override
   void initState() {
@@ -39,7 +42,7 @@ class _NewBeadWidgetState extends State<NewBeadWidget> {
       child: Container(
         height: containerHeight,
         width: containerWidth,
-        decoration: BoxDecoration(color: themeHelper.backgroundColor, borderRadius: BorderRadius.circular(30)),
+        decoration: BoxDecoration(color: themeHelper.secondaryColor, borderRadius: BorderRadius.circular(30)),
         child: Column(
           children: [
             Padding(
@@ -85,8 +88,12 @@ class _NewBeadWidgetState extends State<NewBeadWidget> {
                   ),
                   SizedBox(
                       height: containerHeight * 0.3,
-                      width: sizeHelper.width! * 0.4,
-                      child: ElevatedButton(onPressed: () {}, child: Text("Başlat"))),
+                      width: sizeHelper.width! * 0.3,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context, widget.currentBeads);
+                          },
+                          child: Text("Devam Et"))),
                   const Spacer(
                     flex: 3,
                   ),

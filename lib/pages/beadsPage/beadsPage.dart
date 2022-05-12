@@ -8,8 +8,10 @@ import 'package:kuranpusula/helpers/themeHelper.dart';
 import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/model/beads.dart';
 import 'package:kuranpusula/pages/beadsPage/consts/readyBeads.dart';
+import 'package:kuranpusula/pages/beadsPage/subPages/newBeadsPage/newBeadsPage.dart';
+import 'package:kuranpusula/pages/beadsPage/subPages/oldBeadsPage/oldBeadsPage.dart';
 import 'package:kuranpusula/pages/beadsPage/widgets/topButtons.dart';
-import 'package:kuranpusula/pages/newBeadsPage/newBeadsPage.dart';
+
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
@@ -54,151 +56,179 @@ class _BeadsPageState extends State<BeadsPage> {
           }
         } else if (state is BeadsLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, CustomSnackBar.error(message: "Bir Hata Oluştu"));
+          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir Hata Oluştu"));
           setState(() {
             currentBeads = readyBeads[0];
+          });
+        } else if (state is SelectedBeadsFetched) {
+          EasyLoading.dismiss();
+          setState(() {
+            currentBeads = state.hiveSavedBead;
           });
         }
       },
       child: Scaffold(
-        body: Container(
-          height: sizeHelper.height!,
-          width: sizeHelper.width!,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [Color(0xff70b2d9), Color(0XFF39e5b6)],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          )),
-          child: currentBeads != null
-              ? SafeArea(
-                  child: Column(
-                  children: [
-                    Align(alignment: Alignment.centerLeft, child: BackButton()),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        TopButton(
-                            title: "Yeni Zikir Bul",
-                            onTap: () async {
-                              debugPrint("Kaydedilecek" + currentBeads!.toString());
+        body: Hero(
+          tag: 'Dua ve Zikir',
+          child: Container(
+            height: sizeHelper.height!,
+            width: sizeHelper.width!,
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+              colors: [Color(0xff70b2d9), Color(0XFF39e5b6)],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+            )),
+            child: currentBeads != null
+                ? SafeArea(
+                    child: Column(
+                    children: [
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: BackButton(
+                            onPressed: () {
                               beadsBloc.add(SaveBeads(
                                 beads: currentBeads!,
                               ));
-                              Beads? selectedBeads = await Navigator.push(
-                                  context, MaterialPageRoute(builder: (context) => NewBeadsPage()));
-                            }),
-                        TopButton(
-                            title: "Eski Zikirlerin",
-                            onTap: () {
-                              debugPrint("Kaydedilecek" + currentBeads!.toString());
-                              beadsBloc.add(SaveBeads(
-                                beads: currentBeads!,
-                              ));
-                            })
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      height: sizeHelper.height! * 0.15,
-                      color: Colors.grey.withOpacity(0.6),
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeHelper.width! * 0.9,
-                          child: AutoSizeText(
-                            currentBeads!.bead!,
-                            textAlign: TextAlign.center,
-                            style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.04),
-                          ),
-                        ),
+                              Navigator.pop(context);
+                            },
+                          )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          TopButton(
+                              title: "Yeni Zikir Bul",
+                              onTap: () async {
+                                debugPrint("Kaydedilecek" + currentBeads!.toString());
+                                beadsBloc.add(SaveBeads(
+                                  beads: currentBeads!,
+                                ));
+                                Beads? selectedBeads = await Navigator.push(
+                                    context, MaterialPageRoute(builder: (context) => const NewBeadsPage()));
+
+                                if (selectedBeads != null) {
+                                  beadsBloc.add(GetSelectedBeadsFromHive(selectedBeads: selectedBeads));
+                                }
+                              }),
+                          TopButton(
+                              title: "Eski Zikirlerin",
+                              onTap: () async {
+                                debugPrint("Kaydedilecek" + currentBeads!.toString());
+                                beadsBloc.add(SaveBeads(
+                                  beads: currentBeads!,
+                                ));
+                                Beads? selectedBeads = await Navigator.push(
+                                    context, MaterialPageRoute(builder: (context) => const OldsBeadsPage()));
+
+                                if (selectedBeads != null) {
+                                  beadsBloc.add(GetSelectedBeadsFromHive(selectedBeads: selectedBeads));
+                                }
+                              })
+                        ],
                       ),
-                    ),
-                    Container(
-                      height: 5,
-                      color: Colors.grey,
-                    ),
-                    Container(
-                      height: sizeHelper.height! * 0.1,
-                      color: Colors.grey.withOpacity(0.6),
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeHelper.width! * 0.9,
-                          child: AutoSizeText(
-                            "Anlamı:\n" + currentBeads!.meaning!,
-                            textAlign: TextAlign.center,
-                            style: themeHelper.subtitleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.02),
-                          ),
-                        ),
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    Container(
-                      height: sizeHelper.height! * 0.15,
-                      child: Center(
-                        child: SizedBox(
-                          width: sizeHelper.width! * 0.9,
-                          child: AutoSizeText(
-                            currentBeads!.beadedCount.toString(),
-                            textAlign: TextAlign.center,
-                            style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.1),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          currentBeads!.beadedCount = 0;
-                        });
-                      },
-                      child: Container(
-                        height: sizeHelper.height! * 0.03,
+                      Container(
+                        height: sizeHelper.height! * 0.15,
+                        color: Colors.grey.withOpacity(0.6),
                         child: Center(
                           child: SizedBox(
                             width: sizeHelper.width! * 0.9,
                             child: AutoSizeText(
-                              "Sıfırla",
+                              currentBeads!.bead!,
                               textAlign: TextAlign.center,
-                              style: themeHelper.titleTextStyleDark
-                                  .copyWith(fontSize: sizeHelper.height! * 0.1, color: Colors.red),
+                              style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.04),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          currentBeads!.beadedCount += 1;
-                        });
-                      },
-                      child: Container(
-                        height: sizeHelper.height! * 0.15,
-                        width: sizeHelper.height! * 0.15,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themeHelper.onBackgroundDark,
-                          boxShadow: [
-                            BoxShadow(color: Colors.black.withOpacity(0.8), blurRadius: 20, offset: Offset(5, 10)),
-                          ],
-                        ),
+                      Container(
+                        height: 5,
+                        color: Colors.grey,
+                      ),
+                      Container(
+                        height: sizeHelper.height! * 0.1,
+                        color: Colors.grey.withOpacity(0.6),
                         child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                          child: SizedBox(
+                            width: sizeHelper.width! * 0.9,
                             child: AutoSizeText(
-                              "Bas",
+                              "Anlamı:\n" + currentBeads!.meaning!,
                               textAlign: TextAlign.center,
-                              style: themeHelper.subtitleTextStyleLight.copyWith(fontSize: sizeHelper.height! * 0.1),
+                              style: themeHelper.subtitleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.02),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ))
-              : const SizedBox(),
+                      Container(
+                        height: sizeHelper.height! * 0.15,
+                        child: Center(
+                          child: SizedBox(
+                            width: sizeHelper.width! * 0.9,
+                            child: AutoSizeText(
+                              currentBeads!.beadedCount.toString(),
+                              textAlign: TextAlign.center,
+                              style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.1),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            currentBeads!.beadedCount = 0;
+                          });
+                        },
+                        child: Container(
+                          height: sizeHelper.height! * 0.03,
+                          child: Center(
+                            child: SizedBox(
+                              width: sizeHelper.width! * 0.9,
+                              child: AutoSizeText(
+                                "Sıfırla",
+                                textAlign: TextAlign.center,
+                                style: themeHelper.titleTextStyleDark
+                                    .copyWith(fontSize: sizeHelper.height! * 0.1, color: Colors.red),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            currentBeads!.beadedCount += 1;
+                          });
+                        },
+                        child: Container(
+                          height: sizeHelper.height! * 0.15,
+                          width: sizeHelper.height! * 0.15,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: themeHelper.onBackgroundDark,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.8), blurRadius: 20, offset: const Offset(5, 10)),
+                            ],
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: AutoSizeText(
+                                "Bas",
+                                textAlign: TextAlign.center,
+                                style: themeHelper.subtitleTextStyleLight.copyWith(fontSize: sizeHelper.height! * 0.1),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ))
+                : const SizedBox(),
+          ),
         ),
       ),
     );

@@ -6,7 +6,7 @@ import 'package:kuranpusula/helpers/themeHelper.dart';
 import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/model/beads.dart';
 import 'package:kuranpusula/pages/beadsPage/consts/readyBeads.dart';
-import 'package:kuranpusula/pages/newBeadsPage/widgets/newBeadWidget.dart';
+import 'package:kuranpusula/pages/beadsPage/subPages/newBeadsPage/widgets/newBeadWidget.dart';
 
 class NewBeadsPage extends StatelessWidget {
   const NewBeadsPage({Key? key}) : super(key: key);
