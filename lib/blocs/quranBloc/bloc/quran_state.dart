@@ -22,3 +22,17 @@ class SurahLoadError extends QuranState {
 
   const SurahLoadError({required this.message});
 }
+
+class DetailedSurahLoading extends QuranState {}
+
+class DetailedSurahLoaded extends QuranState {
+  final DetailedSurah detailedSurah;
+
+  const DetailedSurahLoaded({required this.detailedSurah});
+}
+
+class DetailedSurahLoadError extends QuranState {
+  final String message;
+
+  const DetailedSurahLoadError({required this.message});
+}

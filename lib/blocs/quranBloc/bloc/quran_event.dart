@@ -8,3 +8,13 @@ abstract class QuranEvent extends Equatable {
 }
 
 class GetAllSurahs extends QuranEvent {}
+
+class GetSurahDetails extends QuranEvent {
+  final int surahId;
+  final DateTime dateTime;
+
+  const GetSurahDetails({required this.surahId, required this.dateTime});
+
+  @override
+  List<Object> get props => [surahId, dateTime];
+}
