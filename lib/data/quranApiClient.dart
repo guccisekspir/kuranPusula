@@ -41,4 +41,12 @@ class QuranApiClient {
 
     return DetailedSurah();
   }
+
+  Future<List<Translation>> getTranslations(int surahID, int verseID) async {
+    debugPrint("surah" + surahID.toString() + " verse" + verseID.toString());
+    Dio dio = Dio(getBaseOption());
+
+    Response response = await dio.get('surah/$surahID/verse/$verseID/translations');
+    return TranslationList.fromJson(jsonEncode(response.data)).translations ?? [];
+  }
 }
