@@ -108,6 +108,27 @@ class Verse {
       };
 }
 
+class TranslationList {
+  TranslationList({
+    this.translations,
+  });
+
+  List<Translation>? translations;
+
+  factory TranslationList.fromJson(String str) => TranslationList.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory TranslationList.fromMap(Map<String, dynamic> json) => TranslationList(
+        translations:
+            json["data"] == null ? null : List<Translation>.from(json["data"].map((x) => Translation.fromMap(x))),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "data": translations == null ? null : List<dynamic>.from(translations!.map((x) => x.toMap())),
+      };
+}
+
 class Translation {
   Translation({
     this.id,
