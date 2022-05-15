@@ -69,19 +69,20 @@ class _QuranPageState extends State<QuranPage> {
                       itemCount: surahs!.length,
                       itemBuilder: (BuildContext context, int index) {
                         Surah currentSurah = surahs![index];
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: ((context) => DetailedSurahPage(willFetchSurah: currentSurah))));
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) => DetailedSurahPage(willFetchSurah: currentSurah))));
+                              },
+                              child: Container(
                                 height: sizeHelper.height! * 0.1,
                                 width: sizeHelper.width! * 0.95,
+                                color: themeHelper.backgroundColor,
                                 child: Row(
                                   children: [
                                     Container(
@@ -136,9 +137,9 @@ class _QuranPageState extends State<QuranPage> {
                                   ],
                                 ),
                               ),
-                              Divider()
-                            ],
-                          ),
+                            ),
+                            Divider()
+                          ],
                         );
                       },
                     ))
