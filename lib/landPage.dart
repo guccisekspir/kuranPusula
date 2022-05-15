@@ -40,7 +40,7 @@ class _LandPageState extends State<LandPage> {
     super.initState();
 
     /// We made this initiliazation to make sure that init state is over
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       ThemeHelper(fetchedContext: context);
       SizeHelper(fetchedContext: context);
       configLoading();

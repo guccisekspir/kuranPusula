@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:kuranpusula/blocs/beadsBloc/bloc/beads_bloc.dart';
 import 'package:kuranpusula/blocs/quranBloc/bloc/quran_bloc.dart';
+import 'package:kuranpusula/blocs/shareVerseBloc/bloc/share_verse_bloc.dart';
 import 'package:kuranpusula/data/favoritesApiClient.dart';
 import 'package:kuranpusula/data/hiveApiClient.dart';
 import 'package:kuranpusula/data/hiveRepository.dart';
@@ -20,4 +21,5 @@ setupLocator() {
 
   getIt.registerLazySingleton<BeadsBloc>(() => BeadsBloc());
   getIt.registerLazySingleton<QuranBloc>(() => QuranBloc());
+  getIt.registerLazySingleton<ShareVerseBloc>(() => ShareVerseBloc());
 }
