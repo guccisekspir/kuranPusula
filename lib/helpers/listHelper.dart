@@ -1,0 +1,62 @@
+List<String> fridayImageLinks = [
+  "https://i.pinimg.com/474x/aa/d4/ad/aad4addb87c26a63f513d1269298bd10.jpg",
+  "https://i.pinimg.com/474x/e8/dd/2e/e8dd2e5db5ddc75b841deefdb7cae224.jpg",
+  "https://i.pinimg.com/474x/32/98/c0/3298c049c76c53eaadddf0469235f62e.jpg",
+  "https://i.pinimg.com/474x/e8/dd/2e/e8dd2e5db5ddc75b841deefdb7cae224.jpg",
+  "https://i.pinimg.com/474x/2a/8a/ba/2a8abae540977aaea67cb41f9aabf850.jpg",
+  "https://i.pinimg.com/474x/45/c8/8f/45c88f7416c9afb22f1da6eecc0c6028.jpg",
+  "https://i.pinimg.com/474x/dc/5f/da/dc5fda300740b5f128a0bc7003676e68.jpg",
+  "https://i.pinimg.com/474x/82/70/8b/82708b33280c0b77f0ffd1f0c68e50c3.jpg",
+  "https://i.pinimg.com/474x/9b/88/58/9b8858ff8905216abc67bc6b4c44744d.jpg",
+  "https://i.pinimg.com/474x/bb/ea/a6/bbeaa6be5c458549da5bca7d02087105.jpg",
+  "https://i.pinimg.com/474x/e8/dd/2e/e8dd2e5db5ddc75b841deefdb7cae224.jpg",
+];
+List<String> niceWordsImageLinks = [
+  "https://i.pinimg.com/474x/f4/ff/1d/f4ff1daa6c42e925654f2def6501db59.jpg",
+  "https://i.pinimg.com/474x/79/ef/9d/79ef9d815d309c56643ecbd15c4f7fec.jpg",
+  "https://i.pinimg.com/474x/06/49/da/0649da7abe504f32ae5640c159d5adf8.jpg",
+  "https://i.pinimg.com/474x/7f/e3/67/7fe3675a01f681246b28bd1be67f8194.jpg",
+  "https://i.pinimg.com/474x/83/a8/b1/83a8b180dfa7c0849c4b89be3dda0e0e.jpg",
+  "https://i.pinimg.com/474x/74/76/04/7476043f8d342b0addb52c3533d4b033.jpg",
+  "https://i.pinimg.com/474x/7f/be/86/7fbe864c0bd5b334a022a79dab22fb68.jpg",
+  "https://i.pinimg.com/474x/38/fb/06/38fb062d7117c727c27a118133c695f0.jpg",
+  "https://i.pinimg.com/474x/d9/40/4f/d9404f0751f914a2b3199ced497a850c.jpg",
+  "https://i.pinimg.com/474x/13/19/d2/1319d2e6faec8976cdede009579ecad4.jpg",
+  "https://i.pinimg.com/474x/d9/c6/df/d9c6df25ac7feb04528584cad1626795.jpg",
+  "https://i.pinimg.com/474x/d8/eb/d7/d8ebd725c1e08d73cb897314af97ae9a.jpg",
+  "https://i.pinimg.com/474x/7a/4b/99/7a4b998419eb316bbcb771479f80f5b0.jpg"
+];
+List<String> hadisImageLinks = [
+  "https://i.pinimg.com/474x/96/8e/d0/968ed02eaf63f9fd6969733ad6a21882.jpg",
+  "https://i.pinimg.com/474x/14/a7/76/14a776d2e2eca9fa3912342c7b032c1a.jpg",
+  "https://i.pinimg.com/474x/0e/4f/90/0e4f90a96ae78ff1fad3cf1514f09c2e.jpg",
+  "https://i.pinimg.com/474x/27/6f/f5/276ff5ca814c577e6becc44442944862.jpg",
+  "https://i.pinimg.com/474x/71/ef/ca/71efca490f89b06f49ee6bfde60db030.jpg",
+  "https://i.pinimg.com/474x/21/3a/a4/213aa4d042e116b42e4c677fbf649d6c.jpg",
+  "https://i.pinimg.com/474x/a7/1c/4d/a71c4dceef2624553f5ad90c27635643.jpg",
+  "https://i.pinimg.com/474x/40/03/00/40030015f2e6990cc774e972d1f5a01b.jpg",
+  "https://i.pinimg.com/474x/23/f0/17/23f017ee8e49c4a5077cccdc0321431f.jpg",
+  "https://i.pinimg.com/474x/9f/96/33/9f96336a56cb7f7a782832f885b8c486.jpg",
+  "https://i.pinimg.com/474x/b5/f8/d2/b5f8d238f5a10e255a6fb803ffe27599.jpg",
+  "https://i.pinimg.com/474x/aa/22/dd/aa22dd9755cf019d910f41c7400271e2.jpg",
+  "https://i.pinimg.com/474x/08/4e/b6/084eb6911925142b06e6ada3c971b0ae.jpg",
+  "https://i.pinimg.com/474x/b3/aa/62/b3aa628c71563ca2f0b7d30201a87c12.jpg",
+  "https://i.pinimg.com/474x/ae/a5/d5/aea5d5a0a6a83016d6ce106220a118fd.jpg",
+  "https://i.pinimg.com/474x/c5/96/a4/c596a4c2a2aab5a47e0e86f966f6e546.jpg",
+  "https://i.pinimg.com/474x/34/e6/98/34e698cdb6f5fdbe6a91acac773f24b5.jpg"
+];
+List<String> sacrificialImageLinks = [
+  "https://i.pinimg.com/474x/7b/31/e7/7b31e7215bf25a06a3f9ef9e06b415b2.jpg",
+  "https://i.pinimg.com/474x/56/45/de/5645de9e8a4e698d38c1e6d969690bf5.jpg",
+  "https://i.pinimg.com/474x/9d/2d/ac/9d2dacc9d7a670bb61e0c8bcc5b06aeb.jpg",
+  "https://i.pinimg.com/474x/05/0d/86/050d863b96dd363e1098080bba4eb5b4.jpg",
+  "https://i.pinimg.com/474x/c7/6b/8a/c76b8a929c88ff3de43b8d48438a6f63.jpg",
+  "https://i.pinimg.com/474x/63/ef/66/63ef66d562550e7d06c7e3a77a4e0bf9.jpg",
+  "https://i.pinimg.com/474x/bd/2c/cc/bd2ccc01c93f1f15e90b1f2e47f00b56.jpg",
+  "https://i.pinimg.com/474x/e6/8d/3a/e68d3a4baadc21639563070271a6d214.jpg",
+  "https://i.pinimg.com/474x/9d/e4/3a/9de43a25b724204b5fdb5e41a8778eaa.jpg",
+  "https://i.pinimg.com/474x/29/ae/f6/29aef6a422ba611d6c715dfb34c6e9a8.jpg",
+  "https://i.pinimg.com/474x/ab/e3/27/abe3274ac323404b1b3dd7c33f4fc944.jpg",
+  "https://i.pinimg.com/474x/bd/46/38/bd463831e7db38ed03d27e9970e01b96.jpg",
+  "https://i.pinimg.com/474x/61/bf/d3/61bfd3bbc49604e09c6c16b56f34805c.jpg"
+];
