@@ -14,7 +14,9 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class DetailedSurahPage extends StatefulWidget {
   final Surah willFetchSurah;
-  const DetailedSurahPage({Key? key, required this.willFetchSurah}) : super(key: key);
+  final bool isFromSheet;
+
+  const DetailedSurahPage({Key? key, required this.willFetchSurah, this.isFromSheet = false}) : super(key: key);
 
   @override
   State<DetailedSurahPage> createState() => _DetailedSurahPageState();
@@ -59,8 +61,8 @@ class _DetailedSurahPageState extends State<DetailedSurahPage> {
         child: SafeArea(
           child: Column(
             children: [
-              Align(alignment: Alignment.centerLeft, child: BackButton()),
-              Text(widget.willFetchSurah.name.toString() + " Suresi"),
+              !widget.isFromSheet ? Align(alignment: Alignment.centerLeft, child: BackButton()) : const SizedBox(),
+              !widget.isFromSheet ? Text(widget.willFetchSurah.name.toString() + " Suresi") : const SizedBox(),
               detailedSurah != null
                   ? Expanded(
                       child: ListView.builder(
@@ -68,7 +70,10 @@ class _DetailedSurahPageState extends State<DetailedSurahPage> {
                           itemCount: detailedSurah!.verses?.length ?? 0,
                           itemBuilder: ((context, index) {
                             Verse currentVerse = detailedSurah!.verses![index];
-                            return DetailedSurahWidget(currentVerse: currentVerse);
+                            return DetailedSurahWidget(
+                              currentVerse: currentVerse,
+                              isFromSheet: widget.isFromSheet,
+                            );
                           })),
                     )
                   : const SizedBox(),
