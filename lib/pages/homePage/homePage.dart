@@ -4,9 +4,12 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
 import 'package:kuranpusula/pages/beadsPage/beadsPage.dart';
+import 'package:kuranpusula/pages/fridayImagesPage/fridayImagePage.dart';
 import 'package:kuranpusula/pages/homePage/widgets/beadsContainer.dart';
 import 'package:kuranpusula/pages/homePage/widgets/todayVerseContainer.dart';
+import 'package:kuranpusula/pages/qiblahPage/qiblahPage.dart';
 import 'package:kuranpusula/pages/quranPage/quranPage.dart';
+import 'package:kuranpusula/pages/shareVersePage/shareVersePage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -44,10 +47,13 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
                 child: MasonryGridView(
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
+                  gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                   children: [
                     GestureDetector(
                       onTap: () {
@@ -75,24 +81,62 @@ class HomePage extends StatelessWidget {
                         gradientColors: [Color(0XFFA182DF), Color(0xffDE99C0)],
                       ),
                     ),
-                    HomeFeatureWidgets(
-                      containerHeight: sizeHelper.height! * 0.2,
-                      containerWidth: sizeHelper.width! * 0.4,
-                      title: 'Ayet Paylaş',
-                      subtitle: 'Sosyal Medyada ayet paylaş >.',
-                      image: 'assets/icons/verse.png',
-                      gradientColors: [Color(0XFFdb3445), Color(0xfff71735)],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ShareVersePage()));
+                      },
+                      child: HomeFeatureWidgets(
+                        containerHeight: sizeHelper.height! * 0.2,
+                        containerWidth: sizeHelper.width! * 0.4,
+                        title: 'Ayet Paylaş',
+                        subtitle: 'Sosyal Medyada ayet paylaş >.',
+                        image: 'assets/icons/verse.png',
+                        gradientColors: [Color(0XFFdb3445), Color(0xfff71735)],
+                      ),
                     ),
-                    HomeFeatureWidgets(
-                      containerHeight: sizeHelper.height! * 0.2,
-                      containerWidth: sizeHelper.width! * 0.4,
-                      title: 'Cuma Sözleri',
-                      subtitle: 'Birbirinden güzel sözler >.',
-                      image: 'assets/icons/cuma.png',
-                      gradientColors: [Color(0XFFeb6b9d), Color(0xffee8c68)],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FridayImagePage()));
+                      },
+                      child: HomeFeatureWidgets(
+                        containerHeight: sizeHelper.height! * 0.2,
+                        containerWidth: sizeHelper.width! * 0.4,
+                        title: 'Cuma Sözleri',
+                        subtitle: 'Birbirinden güzel sözler >.',
+                        image: 'assets/icons/cuma.png',
+                        gradientColors: [Color(0XFFeb6b9d), Color(0xffee8c68)],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FridayImagePage()));
+                      },
+                      child: HomeFeatureWidgets(
+                        containerHeight: sizeHelper.height! * 0.2,
+                        containerWidth: sizeHelper.width! * 0.4,
+                        title: 'Dua İste',
+                        subtitle: 'Hayır için Dua oku,iste >.',
+                        image: 'assets/icons/pray.png',
+                        gradientColors: [
+                          Color(0xff0652c5),
+                          Color(0XFF74f2ce),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => QiblahCompass()));
+                      },
+                      child: HomeFeatureWidgets(
+                        containerHeight: sizeHelper.height! * 0.2,
+                        containerWidth: sizeHelper.width! * 0.4,
+                        title: 'Kıbleyi Bul',
+                        subtitle: 'Kıblenizi bulun >.',
+                        image: 'assets/icons/qibla.png',
+                        gradientColors: [Color(0XFFeb6b9d), Color(0xff36096d)],
+                      ),
                     ),
                   ],
-                  gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                 ),
               ),
             )
