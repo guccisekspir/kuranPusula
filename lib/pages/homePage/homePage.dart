@@ -9,6 +9,7 @@ import 'package:kuranpusula/pages/homePage/widgets/beadsContainer.dart';
 import 'package:kuranpusula/pages/homePage/widgets/todayVerseContainer.dart';
 import 'package:kuranpusula/pages/qiblahPage/qiblahPage.dart';
 import 'package:kuranpusula/pages/quranPage/quranPage.dart';
+import 'package:kuranpusula/pages/requestPrayPage/requestPrayPage.dart';
 import 'package:kuranpusula/pages/shareVersePage/shareVersePage.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,39 +26,46 @@ class HomePage extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: sizeHelper.width! * 0.5,
-                maxWidth: sizeHelper.width! * 0.5,
-                maxHeight: sizeHelper.height! * 0.1,
-              ),
-              child: AutoSizeText(
-                'Kuran Pusula',
-                style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
-                textAlign: TextAlign.center,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: sizeHelper.height! * 0.1,
+                  child: Image.asset("assets/logo.png"),
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: sizeHelper.width! * 0.5,
+                    maxWidth: sizeHelper.width! * 0.5,
+                    maxHeight: sizeHelper.height! * 0.1,
+                  ),
+                  child: Center(
+                    child: AutoSizeText(
+                      'Kuran Pusula',
+                      style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(
-              height: sizeHelper.height! * 0.1,
-              child: Image.asset("assets/logo.png"),
-            ),
-            TodayVerseContainer(),
-            SizedBox(
+            const TodayVerseContainer(),
+            const SizedBox(
               height: 10,
             ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
+                  horizontal: 4.0,
                 ),
                 child: MasonryGridView(
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
-                  gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => BeadsPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const BeadsPage()));
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.3,
@@ -65,12 +73,12 @@ class HomePage extends StatelessWidget {
                         title: 'Dua ve Zikir',
                         subtitle: 'Zikir yapmaya başla >.',
                         image: 'assets/icons/counter.png',
-                        gradientColors: [Color(0xff70b2d9), Color(0XFF39e5b6)],
+                        gradientColors: const [Color(0xff70b2d9), Color(0XFF39e5b6)],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => QuranPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const QuranPage()));
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.25,
@@ -78,12 +86,12 @@ class HomePage extends StatelessWidget {
                         title: 'Kuran',
                         subtitle: 'Ayetleri İncele >.',
                         image: 'assets/icons/quran.png',
-                        gradientColors: [Color(0XFFA182DF), Color(0xffDE99C0)],
+                        gradientColors: const [Color(0XFFA182DF), Color(0xffDE99C0)],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ShareVersePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ShareVersePage()));
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,
@@ -91,12 +99,12 @@ class HomePage extends StatelessWidget {
                         title: 'Ayet Paylaş',
                         subtitle: 'Sosyal Medyada ayet paylaş >.',
                         image: 'assets/icons/verse.png',
-                        gradientColors: [Color(0XFFdb3445), Color(0xfff71735)],
+                        gradientColors: const [Color(0XFFdb3445), Color(0xfff71735)],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => FridayImagePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const FridayImagePage()));
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,
@@ -104,12 +112,12 @@ class HomePage extends StatelessWidget {
                         title: 'Cuma Sözleri',
                         subtitle: 'Birbirinden güzel sözler >.',
                         image: 'assets/icons/cuma.png',
-                        gradientColors: [Color(0XFFeb6b9d), Color(0xffee8c68)],
+                        gradientColors: const [Color(0XFFeb6b9d), Color(0xffee8c68)],
                       ),
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => FridayImagePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const RequestPray()));
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,
@@ -117,10 +125,7 @@ class HomePage extends StatelessWidget {
                         title: 'Dua İste',
                         subtitle: 'Hayır için Dua oku,iste >.',
                         image: 'assets/icons/pray.png',
-                        gradientColors: [
-                          Color(0xff0652c5),
-                          Color(0XFF74f2ce),
-                        ],
+                        gradientColors: const [Color(0xff0652c5), Color(0XFF74f2ce)],
                       ),
                     ),
                     GestureDetector(
@@ -133,7 +138,7 @@ class HomePage extends StatelessWidget {
                         title: 'Kıbleyi Bul',
                         subtitle: 'Kıblenizi bulun >.',
                         image: 'assets/icons/qibla.png',
-                        gradientColors: [Color(0XFFeb6b9d), Color(0xff36096d)],
+                        gradientColors: const [Color(0XFFeb6b9d), Color(0xff36096d)],
                       ),
                     ),
                   ],
