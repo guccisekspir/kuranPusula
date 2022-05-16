@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "kuranpusula")
-set(APPLICATION_ID "com.example.kuranpusula")
+set(BINARY_NAME "Kuran Pusula")
+set(APPLICATION_ID "com.sekspir.kuranpusula")
 
 cmake_policy(SET CMP0063 NEW)
 

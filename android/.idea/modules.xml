@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/183476766/android.flutter_compass.iml" filepath="$PROJECT_DIR$/.idea/modules/183476766/android.flutter_compass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-47868586/android.flutter_qiblah.iml" filepath="$PROJECT_DIR$/.idea/modules/-47868586/android.flutter_qiblah.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-959673954/android.geolocator_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-959673954/android.geolocator_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1553972338/android.path_provider_android.iml" filepath="$PROJECT_DIR$/.idea/modules/-1553972338/android.path_provider_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-746397480/android.social_share.iml" filepath="$PROJECT_DIR$/.idea/modules/-746397480/android.social_share.iml" />
+    </modules>
+  </component>
+</project>
