@@ -78,7 +78,7 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
                 ),
               ),
             ),
-            Divider(),
+            const Divider(),
             ConstrainedBox(
               constraints: BoxConstraints(
                   maxHeight: sizeHelper.height! * 0.15,
@@ -98,7 +98,7 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
                 showSelectedItems: true,
                 items: translationsList?.map((e) => e.author?.name ?? "").toList() ??
                     [widget.currentVerse.translation?.author?.name ?? ""],
-                dropdownSearchDecoration: InputDecoration(
+                dropdownSearchDecoration: const InputDecoration(
                   labelText: "Çevirmeni Seçin",
                   hintText: "country in menu mode",
                 ),
@@ -113,8 +113,8 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
                 selectedItem: widget.currentVerse.translation?.author?.name ?? "",
               ),
             ),
-            Divider(),
-            Text("Kelimeler"),
+            const Divider(),
+            const Text("Kelimeler"),
           ],
         ),
       ),

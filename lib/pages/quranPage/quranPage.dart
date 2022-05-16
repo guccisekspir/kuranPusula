@@ -58,7 +58,7 @@ class _QuranPageState extends State<QuranPage> {
           child: SafeArea(
               child: Column(
             children: [
-              Align(alignment: Alignment.centerLeft, child: BackButton()),
+              const Align(alignment: Alignment.centerLeft, child: BackButton()),
               Text(
                 "Kuran Ayetleri",
                 style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
@@ -95,14 +95,14 @@ class _QuranPageState extends State<QuranPage> {
                                         child: Text(currentSurah.id.toString()),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: sizeHelper.height! * 0.1,
                                       width: sizeHelper.width! * 0.5,
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: sizeHelper.height! * 0.1 * 0.3,
                                             child: AutoSizeText(
                                               currentSurah.name!,
@@ -111,7 +111,7 @@ class _QuranPageState extends State<QuranPage> {
                                                   color: themeHelper.onBackgroundLight),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                               height: sizeHelper.height! * 0.1 * 0.2,
                                               child: AutoSizeText(
                                                 "Ayet Sayısı :" + currentSurah.verseCount!.toString(),
@@ -123,7 +123,7 @@ class _QuranPageState extends State<QuranPage> {
                                     const Spacer(),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 8.0),
-                                      child: Container(
+                                      child: SizedBox(
                                         height: sizeHelper.height! * 0.1,
                                         width: sizeHelper.width! * 0.2,
                                         child: Center(
@@ -138,7 +138,7 @@ class _QuranPageState extends State<QuranPage> {
                                 ),
                               ),
                             ),
-                            Divider()
+                            const Divider()
                           ],
                         );
                       },

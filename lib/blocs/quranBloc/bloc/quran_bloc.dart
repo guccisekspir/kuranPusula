@@ -38,7 +38,7 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
             emit(DetailedSurahLoaded(detailedSurah: detailedSurah));
           } else {
             debugPrint("Null");
-            emit(DetailedSurahLoadError(message: "Bilinmeyen bir hata oluştu"));
+            emit(const DetailedSurahLoadError(message: "Bilinmeyen bir hata oluştu"));
           }
         } catch (e) {
           debugPrint(e.toString());

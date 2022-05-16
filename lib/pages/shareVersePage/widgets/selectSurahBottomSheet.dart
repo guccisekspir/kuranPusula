@@ -3,14 +3,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kuranpusula/blocs/quranBloc/bloc/quran_bloc.dart';
 import 'package:kuranpusula/blocs/shareVerseBloc/bloc/share_verse_bloc.dart';
 import 'package:kuranpusula/globalWidgets/buzzedWidget.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
 import 'package:kuranpusula/locator.dart';
-import 'package:kuranpusula/model/detailedSurah.dart';
 import 'package:kuranpusula/model/surah.dart';
 import 'package:kuranpusula/pages/shareVersePage/widgets/selectVerseBottomSheet.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -140,14 +138,14 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                                             child: Text(currentSurah.id.toString()),
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: sizeHelper.height! * 0.1,
                                           width: sizeHelper.width! * 0.5,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Container(
+                                              SizedBox(
                                                 height: sizeHelper.height! * 0.1 * 0.3,
                                                 child: AutoSizeText(
                                                   currentSurah.name!,
@@ -156,7 +154,7 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                                                       color: themeHelper.onPrimary),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                   height: sizeHelper.height! * 0.1 * 0.2,
                                                   child: AutoSizeText(
                                                     "Ayet Sayısı :" + currentSurah.verseCount!.toString(),
@@ -168,7 +166,7 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                                         const Spacer(),
                                         Padding(
                                           padding: const EdgeInsets.only(right: 8.0),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: sizeHelper.height! * 0.1,
                                             width: sizeHelper.width! * 0.2,
                                             child: Center(

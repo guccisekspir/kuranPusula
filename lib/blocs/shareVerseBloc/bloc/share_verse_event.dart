@@ -10,7 +10,7 @@ abstract class ShareVerseEvent extends Equatable {
 class SurahSelect extends ShareVerseEvent {
   final Surah selectedSurah;
 
-  SurahSelect({required this.selectedSurah});
+  const SurahSelect({required this.selectedSurah});
 
   @override
   List<Object> get props => [selectedSurah];
@@ -19,7 +19,7 @@ class SurahSelect extends ShareVerseEvent {
 class VerseSelect extends ShareVerseEvent {
   final Verse selectedVerse;
 
-  VerseSelect({required this.selectedVerse});
+  const VerseSelect({required this.selectedVerse});
 
   @override
   List<Object> get props => [selectedVerse];

@@ -34,7 +34,7 @@ class _WillScreenShotState extends State<WillScreenShot> {
           Image.network(widget.imageURL),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: SizedBox(
               height: widget.currentImageInfo.height,
               width: widget.currentImageInfo.width,
               child: Column(

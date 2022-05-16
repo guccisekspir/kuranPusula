@@ -161,7 +161,7 @@ class _BeadsPageState extends State<BeadsPage> {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         height: sizeHelper.height! * 0.15,
                         child: Center(
                           child: SizedBox(
@@ -180,7 +180,7 @@ class _BeadsPageState extends State<BeadsPage> {
                             currentBeads!.beadedCount = 0;
                           });
                         },
-                        child: Container(
+                        child: SizedBox(
                           height: sizeHelper.height! * 0.03,
                           child: Center(
                             child: SizedBox(

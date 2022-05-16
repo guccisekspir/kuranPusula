@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -55,13 +54,15 @@ class _DetailedSurahPageState extends State<DetailedSurahPage> {
         }
       },
       child: Container(
-        height: sizeHelper.height,
+        height: !widget.isFromSheet ? sizeHelper.height : sizeHelper.height! * 0.8,
         width: sizeHelper.width,
         color: themeHelper.backgroundColor,
         child: SafeArea(
           child: Column(
             children: [
-              !widget.isFromSheet ? Align(alignment: Alignment.centerLeft, child: BackButton()) : const SizedBox(),
+              !widget.isFromSheet
+                  ? const Align(alignment: Alignment.centerLeft, child: BackButton())
+                  : const SizedBox(),
               !widget.isFromSheet ? Text(widget.willFetchSurah.name.toString() + " Suresi") : const SizedBox(),
               detailedSurah != null
                   ? Expanded(

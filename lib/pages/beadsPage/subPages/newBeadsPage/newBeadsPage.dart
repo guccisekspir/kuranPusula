@@ -26,7 +26,7 @@ class NewBeadsPage extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            Align(alignment: Alignment.centerLeft, child: BackButton()),
+            const Align(alignment: Alignment.centerLeft, child: BackButton()),
             Expanded(
               child: ListView.builder(
                   shrinkWrap: true,

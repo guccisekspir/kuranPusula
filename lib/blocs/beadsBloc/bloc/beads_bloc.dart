@@ -21,7 +21,7 @@ class BeadsBloc extends Bloc<BeadsEvent, BeadsState> {
             debugPrint("kaydedildi" + event.beads.bead.toString());
             emit(BeadsSaved());
           } else {
-            emit(BeadsSaveError(message: "Beads could not be saved"));
+            emit(const BeadsSaveError(message: "Beads could not be saved"));
           }
           List<Beads> beads = await hiveRepository.getSavedBeads();
           beads.sort();

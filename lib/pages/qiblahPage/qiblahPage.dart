@@ -75,8 +75,9 @@ class _QiblahCompassState extends State<QiblahCompass> {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();
       _locationStreamController.sink.add(s);
-    } else
+    } else {
       _locationStreamController.sink.add(locationStatus);
+    }
   }
 
   @override
@@ -95,6 +96,8 @@ class QiblahCompassWidget extends StatelessWidget {
     height: 300,
     alignment: Alignment.center,
   );
+
+  QiblahCompassWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +130,7 @@ class QiblahCompassWidget extends StatelessWidget {
             );
           },
         ),
-        SafeArea(child: Align(alignment: Alignment.topLeft, child: BackButton()))
+        const SafeArea(child: const Align(alignment: Alignment.topLeft, child: const BackButton()))
       ],
     );
   }

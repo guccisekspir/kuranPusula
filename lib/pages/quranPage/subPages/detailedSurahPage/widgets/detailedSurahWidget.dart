@@ -5,7 +5,6 @@ import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
 import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/model/detailedSurah.dart';
-import 'package:kuranpusula/model/surah.dart';
 import 'package:kuranpusula/pages/quranPage/subPages/verseDetailPage/verseDetailPage.dart';
 
 class DetailedSurahWidget extends StatelessWidget {

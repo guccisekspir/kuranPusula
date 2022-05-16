@@ -46,7 +46,7 @@ class TodayVerseContainer extends StatelessWidget {
                     ),
                   )),
             ),
-            Expanded(
+            const Expanded(
                 child: AutoSizeText(
               "Rûm Sûresi(30) 31. Ayet",
               textAlign: TextAlign.center,

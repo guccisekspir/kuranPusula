@@ -43,7 +43,7 @@ class _OldsBeadsPageState extends State<OldsBeadsPage> {
           });
         } else if (state is BeadsLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, CustomSnackBar.error(message: "Bir hata oluştu"));
+          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir hata oluştu"));
         }
       },
       child: Container(
@@ -53,7 +53,7 @@ class _OldsBeadsPageState extends State<OldsBeadsPage> {
         child: SafeArea(
           child: Column(
             children: [
-              Align(alignment: Alignment.centerLeft, child: BackButton()),
+              const Align(alignment: Alignment.centerLeft, child: BackButton()),
               Text(
                 "Önceki tespihlerin",
                 style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:kuranpusula/helpers/listHelper.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
@@ -45,7 +45,7 @@ class _FridayImagePageState extends State<FridayImagePage> {
               mode: Mode.MENU,
               showSelectedItems: true,
               items: labelNames,
-              dropdownSearchDecoration: InputDecoration(
+              dropdownSearchDecoration: const InputDecoration(
                 labelText: "Ne paylaşacaksın ?",
               ),
               popupItemDisabled: (String s) => s.startsWith('I'),
@@ -54,7 +54,7 @@ class _FridayImagePageState extends State<FridayImagePage> {
                   setState(() {
                     selectedImagesList = imagesList[labelNames.indexOf(e)];
                   });
-                  Timer.periodic(Duration(milliseconds: 300), (timer) {
+                  Timer.periodic(const Duration(milliseconds: 300), (timer) {
                     if (mounted) {
                       setState(() {});
                     }
@@ -73,7 +73,7 @@ class _FridayImagePageState extends State<FridayImagePage> {
                   child: MasonryGridView(
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 20,
-                    gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                     children: selectedImagesList.map((e) => FridayImageWidget(imageURL: e)).toList(),
                   )))
         ],

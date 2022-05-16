@@ -71,7 +71,7 @@ class _OldBeadWidgetState extends State<OldBeadWidget> {
               ],
             ),
             const Spacer(),
-            Container(
+            SizedBox(
               height: containerHeight * 0.4,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +80,7 @@ class _OldBeadWidgetState extends State<OldBeadWidget> {
                       opacity: 0,
                       child: IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.favorite,
                           ))),
                   const Spacer(
@@ -93,7 +93,7 @@ class _OldBeadWidgetState extends State<OldBeadWidget> {
                           onPressed: () {
                             Navigator.pop(context, widget.currentBeads);
                           },
-                          child: Text("Devam Et"))),
+                          child: const Text("Devam Et"))),
                   const Spacer(
                     flex: 3,
                   ),

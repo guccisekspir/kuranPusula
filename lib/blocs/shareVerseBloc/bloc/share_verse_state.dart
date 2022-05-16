@@ -12,7 +12,7 @@ class ShareVerseInitial extends ShareVerseState {}
 class SurahSelected extends ShareVerseState {
   final Surah selectedSurah;
 
-  SurahSelected({required this.selectedSurah});
+  const SurahSelected({required this.selectedSurah});
 
   @override
   List<Object> get props => [selectedSurah];
@@ -22,7 +22,7 @@ class VerseSelected extends ShareVerseState {
   final Verse selectedVerse;
   final Surah selectedSurah;
 
-  VerseSelected({required this.selectedVerse, required this.selectedSurah});
+  const VerseSelected({required this.selectedVerse, required this.selectedSurah});
 
   @override
   List<Object> get props => [selectedVerse, selectedSurah];

@@ -76,7 +76,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
                   children: [
                     isWillScreenShot
                         ? SizedBox(height: sizeHelper.height! * 0.1, width: sizeHelper.width)
-                        : Align(alignment: Alignment.centerLeft, child: BackButton()),
+                        : const Align(alignment: Alignment.centerLeft, child: BackButton()),
                     GestureDetector(
                       onTap: () {
                         showModalBottomSheet(
@@ -84,7 +84,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
                             isScrollControlled: true,
                             backgroundColor: themeHelper.surfaceColor.withOpacity(0.3),
                             builder: (context) {
-                              return ChangeSurahBottomSheet(
+                              return const ChangeSurahBottomSheet(
                                 selectedSurah: null,
                               );
                             });

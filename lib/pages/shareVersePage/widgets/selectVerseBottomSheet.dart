@@ -71,7 +71,7 @@ class _ChangeVerseBottomSheetState extends State<ChangeVerseBottomSheet> {
       child: ClipRRect(
         child: BuzzedContainer(
           child: AnimatedContainer(
-            height: MediaQuery.of(context).viewInsets.bottom > 0 ? sizeHelper.height! * 0.8 : sizeHelper.height! * 0.8,
+            height: sizeHelper.height! * 0.9,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
             ),

@@ -35,7 +35,7 @@ class _FridayImageWidgetState extends State<FridayImageWidget> {
     // TODO: implement initState
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((Duration a) {
-      Timer.periodic(Duration(milliseconds: 300), (timer) {
+      Timer.periodic(const Duration(milliseconds: 300), (timer) {
         if (mounted) {
           setState(() {});
         }
@@ -94,7 +94,7 @@ class _FridayImageWidgetState extends State<FridayImageWidget> {
                 currentImageInfo != null
                     ? Align(
                         alignment: Alignment.bottomCenter,
-                        child: Container(
+                        child: SizedBox(
                           height: currentImageInfo!.height,
                           width: currentImageInfo!.width,
                           child: Column(
@@ -131,7 +131,7 @@ class _FridayImageWidgetState extends State<FridayImageWidget> {
           Image.network(widget.imageURL),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: SizedBox(
               height: currentImageInfo.height,
               width: currentImageInfo.width,
               child: Column(

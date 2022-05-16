@@ -52,6 +52,6 @@ class _LandPageState extends State<LandPage> {
 
   @override
   Widget build(BuildContext context) {
-    return isInit ? Scaffold(body: HomePage()) : const SizedBox();
+    return isInit ? const Scaffold(body: HomePage()) : const SizedBox();
   }
 }
