@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
+import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/pages/beadsPage/beadsPage.dart';
 import 'package:kuranpusula/pages/fridayImagesPage/fridayImagePage.dart';
 import 'package:kuranpusula/pages/homePage/widgets/beadsContainer.dart';
@@ -19,6 +21,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeHelper themeHelper = ThemeHelper();
     SizeHelper sizeHelper = SizeHelper();
+    AdmobBloc admobBloc = getIt<AdmobBloc>();
+    admobBloc.add(LoadIntersAd(DateTime.now()));
     return Container(
       height: sizeHelper.height,
       width: sizeHelper.width,

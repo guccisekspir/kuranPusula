@@ -50,6 +50,9 @@ dependencies:
   aurora: ^1.0.0
 
   # Mechanic
+  google_mobile_ads: ^1.2.0
+  in_app_review: ^2.0.4
+  update_available: ^2.1.0
   flutter_qiblah: ^2.0.2
   geolocator: ^7.6.0
   flutter_svg: ^1.0.3

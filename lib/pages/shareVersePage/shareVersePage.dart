@@ -4,6 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 
 import 'package:kuranpusula/blocs/shareVerseBloc/bloc/share_verse_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
@@ -27,6 +28,8 @@ class ShareVersePage extends StatefulWidget {
 class _ShareVersePageState extends State<ShareVersePage> {
   ThemeHelper themeHelper = ThemeHelper();
   SizeHelper sizeHelper = SizeHelper();
+  AdmobBloc admobBloc = getIt<AdmobBloc>();
+
   Verse? selectedVerse;
   Surah? selectedSurah;
   ShareVerseBloc shareVerseBloc = getIt<ShareVerseBloc>();
@@ -79,6 +82,7 @@ class _ShareVersePageState extends State<ShareVersePage> {
                         : const Align(alignment: Alignment.centerLeft, child: BackButton()),
                     GestureDetector(
                       onTap: () {
+                        admobBloc.add(ShowIntersAd(DateTime.now()));
                         showModalBottomSheet(
                             context: context,
                             isScrollControlled: true,

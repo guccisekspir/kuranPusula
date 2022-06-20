@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/blocs/beadsBloc/bloc/beads_bloc.dart';
 import 'package:kuranpusula/blocs/quranBloc/bloc/quran_bloc.dart';
 import 'package:kuranpusula/blocs/shareVerseBloc/bloc/share_verse_bloc.dart';
@@ -22,4 +23,5 @@ setupLocator() {
   getIt.registerLazySingleton<BeadsBloc>(() => BeadsBloc());
   getIt.registerLazySingleton<QuranBloc>(() => QuranBloc());
   getIt.registerLazySingleton<ShareVerseBloc>(() => ShareVerseBloc());
+  getIt.registerLazySingleton<AdmobBloc>(() => AdmobBloc());
 }

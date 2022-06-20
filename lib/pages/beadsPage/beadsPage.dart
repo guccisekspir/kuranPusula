@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/blocs/beadsBloc/bloc/beads_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
@@ -28,6 +29,7 @@ class _BeadsPageState extends State<BeadsPage> {
   int counter = 0;
   BeadsBloc beadsBloc = getIt<BeadsBloc>();
   Beads? currentBeads;
+  AdmobBloc admobBloc = getIt<AdmobBloc>();
   @override
   void initState() {
     // TODO: implement initState
@@ -87,6 +89,7 @@ class _BeadsPageState extends State<BeadsPage> {
                           alignment: Alignment.centerLeft,
                           child: BackButton(
                             onPressed: () {
+                              admobBloc.add(ShowIntersAd(DateTime.now()));
                               beadsBloc.add(SaveBeads(
                                 beads: currentBeads!,
                               ));
@@ -100,6 +103,7 @@ class _BeadsPageState extends State<BeadsPage> {
                               title: "Yeni Zikir Bul",
                               onTap: () async {
                                 debugPrint("Kaydedilecek" + currentBeads!.toString());
+                                //  admobBloc.add(ShowIntersAd(DateTime.now()));
                                 beadsBloc.add(SaveBeads(
                                   beads: currentBeads!,
                                 ));
@@ -113,6 +117,7 @@ class _BeadsPageState extends State<BeadsPage> {
                           TopButton(
                               title: "Eski Zikirlerin",
                               onTap: () async {
+                                //    admobBloc.add(ShowIntersAd(DateTime.now()));
                                 debugPrint("Kaydedilecek" + currentBeads!.toString());
                                 beadsBloc.add(SaveBeads(
                                   beads: currentBeads!,

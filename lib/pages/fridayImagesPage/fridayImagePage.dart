@@ -5,9 +5,11 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/helpers/listHelper.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
+import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/pages/fridayImagesPage/widgets/fridayImageWidget.dart';
 
 class FridayImagePage extends StatefulWidget {
@@ -23,6 +25,7 @@ class _FridayImagePageState extends State<FridayImagePage> {
   List<List<String>> imagesList = [fridayImageLinks, niceWordsImageLinks, hadisImageLinks, sacrificialImageLinks];
   List<String> selectedImagesList = fridayImageLinks;
   List<String> labelNames = ["Cuma Sözleri", "Güzel Sözler", "Hadisler", "Kurban Bayramı"];
+  AdmobBloc admobBloc = getIt<AdmobBloc>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,9 +35,14 @@ class _FridayImagePageState extends State<FridayImagePage> {
       child: SafeArea(
           child: Column(
         children: [
-          const Align(
+          Align(
             alignment: Alignment.centerLeft,
-            child: BackButton(),
+            child: BackButton(
+              onPressed: () {
+                Navigator.pop(context);
+                admobBloc.add(ShowIntersAd(DateTime.now()));
+              },
+            ),
           ),
           AutoSizeText("İstediğin Resmi Paylaş",
               style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
@@ -52,7 +60,8 @@ class _FridayImagePageState extends State<FridayImagePage> {
               onChanged: (String? e) {
                 if (e != null) {
                   setState(() {
-                    selectedImagesList = imagesList[labelNames.indexOf(e)];
+                    selectedImagesList = imagesList[labelNames.indexOf(e)].toSet().toList();
+                    selectedImagesList.shuffle();
                   });
                   Timer.periodic(const Duration(milliseconds: 300), (timer) {
                     if (mounted) {

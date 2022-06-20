@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/blocs/quranBloc/bloc/quran_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
@@ -32,6 +33,8 @@ class _QuranPageState extends State<QuranPage> {
     quranBloc.add(GetAllSurahs());
   }
 
+  AdmobBloc admobBloc = getIt<AdmobBloc>();
+
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -58,7 +61,14 @@ class _QuranPageState extends State<QuranPage> {
           child: SafeArea(
               child: Column(
             children: [
-              const Align(alignment: Alignment.centerLeft, child: BackButton()),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: BackButton(
+                    onPressed: () {
+                      admobBloc.add(ShowIntersAd(DateTime.now()));
+                      Navigator.pop(context);
+                    },
+                  )),
               Text(
                 "Kuran Ayetleri",
                 style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),

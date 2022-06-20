@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kuranpusula/data/favoritesApiClient.dart';
 import 'package:kuranpusula/landPage.dart';
@@ -11,6 +12,10 @@ void main() async {
   setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  await MobileAds.instance.initialize();
+
+  MobileAds.instance
+      .updateRequestConfiguration(RequestConfiguration(testDeviceIds: ['84E809EDF0BEF25961F6196A69B56CF0']));
 
   Hive.registerAdapter(BeadsAdapter());
 

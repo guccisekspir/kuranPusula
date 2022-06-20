@@ -6,6 +6,8 @@ import 'package:flutter_qiblah/flutter_qiblah.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
+import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/pages/qiblahPage/widgets/loading_indicator.dart';
 import 'package:kuranpusula/pages/qiblahPage/widgets/location_error_widget.dart';
 
@@ -101,6 +103,7 @@ class QiblahCompassWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AdmobBloc admobBloc = getIt<AdmobBloc>();
     return Stack(
       children: [
         StreamBuilder(
@@ -130,7 +133,15 @@ class QiblahCompassWidget extends StatelessWidget {
             );
           },
         ),
-        const SafeArea(child: const Align(alignment: Alignment.topLeft, child: const BackButton()))
+        SafeArea(
+            child: Align(
+                alignment: Alignment.topLeft,
+                child: BackButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    admobBloc.add(ShowIntersAd(DateTime.now()));
+                  },
+                )))
       ],
     );
   }
