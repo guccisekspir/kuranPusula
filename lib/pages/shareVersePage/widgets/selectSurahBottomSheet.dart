@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kuranpusula/blocs/quranBloc/bloc/quran_bloc.dart';
 import 'package:kuranpusula/blocs/shareVerseBloc/bloc/share_verse_bloc.dart';
 import 'package:kuranpusula/globalWidgets/buzzedWidget.dart';
@@ -110,7 +111,8 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                               GestureDetector(
                                 onTap: () {
                                   shareVerseBloc.add(SurahSelect(selectedSurah: currentSurah));
-                                  Navigator.pop(context);
+                                  GoRouter.of(context).pop();
+
                                   showModalBottomSheet(
                                       context: context,
                                       isScrollControlled: true,

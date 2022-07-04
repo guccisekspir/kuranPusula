@@ -6,6 +6,7 @@ import 'package:flutter_qiblah/flutter_qiblah.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/locator.dart';
 import 'package:kuranpusula/pages/qiblahPage/widgets/loading_indicator.dart';
@@ -138,7 +139,8 @@ class QiblahCompassWidget extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: BackButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    GoRouter.of(context).pop();
+
                     admobBloc.add(ShowIntersAd(DateTime.now()));
                   },
                 )))

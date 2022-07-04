@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kuranpusula/blocs/shareVerseBloc/bloc/share_verse_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
@@ -23,7 +24,8 @@ class DetailedSurahWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (isFromSheet) {
-          Navigator.pop(context);
+          GoRouter.of(context).pop();
+          ;
           shareVerseBloc.add(VerseSelect(selectedVerse: currentVerse));
         } else {
           Navigator.push(context, MaterialPageRoute(builder: (context) => VerseDetailPage(currentVerse: currentVerse)));
