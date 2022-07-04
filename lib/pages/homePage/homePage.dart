@@ -13,6 +13,7 @@ import 'package:kuranpusula/pages/qiblahPage/qiblahPage.dart';
 import 'package:kuranpusula/pages/quranPage/quranPage.dart';
 import 'package:kuranpusula/pages/requestPrayPage/requestPrayPage.dart';
 import 'package:kuranpusula/pages/shareVersePage/shareVersePage.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const BeadsPage()));
+                        GoRouter.of(context).pushNamed("beads");
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.3,
@@ -82,7 +83,7 @@ class HomePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const QuranPage()));
+                        GoRouter.of(context).pushNamed("quran");
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.25,
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ShareVersePage()));
+                        GoRouter.of(context).pushNamed("shareVerse");
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,
@@ -108,7 +109,7 @@ class HomePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const FridayImagePage()));
+                        GoRouter.of(context).pushNamed("fridayImage");
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,
@@ -121,7 +122,7 @@ class HomePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const RequestPray()));
+                        GoRouter.of(context).pushNamed("requestPray");
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,
@@ -134,7 +135,7 @@ class HomePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => QiblahCompass()));
+                        GoRouter.of(context).pushNamed("qiblah");
                       },
                       child: HomeFeatureWidgets(
                         containerHeight: sizeHelper.height! * 0.2,

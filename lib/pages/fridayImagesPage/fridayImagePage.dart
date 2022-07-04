@@ -5,6 +5,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/helpers/listHelper.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
@@ -39,7 +40,8 @@ class _FridayImagePageState extends State<FridayImagePage> {
             alignment: Alignment.centerLeft,
             child: BackButton(
               onPressed: () {
-                Navigator.pop(context);
+                GoRouter.of(context).pop();
+
                 admobBloc.add(ShowIntersAd(DateTime.now()));
               },
             ),

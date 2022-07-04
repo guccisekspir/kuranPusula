@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
 import 'package:kuranpusula/blocs/beadsBloc/bloc/beads_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
@@ -93,7 +94,7 @@ class _BeadsPageState extends State<BeadsPage> {
                               beadsBloc.add(SaveBeads(
                                 beads: currentBeads!,
                               ));
-                              Navigator.pop(context);
+                              GoRouter.of(context).pop();
                             },
                           )),
                       Row(
