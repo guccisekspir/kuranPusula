@@ -18,7 +18,8 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 class ChangeVerseBottomSheet extends StatefulWidget {
   final Surah selectedSurah;
 
-  const ChangeVerseBottomSheet({Key? key, required this.selectedSurah}) : super(key: key);
+  const ChangeVerseBottomSheet({Key? key, required this.selectedSurah})
+      : super(key: key);
 
   @override
   State<ChangeVerseBottomSheet> createState() => _ChangeVerseBottomSheetState();
@@ -65,7 +66,8 @@ class _ChangeVerseBottomSheetState extends State<ChangeVerseBottomSheet> {
           });
         } else if (state is SurahLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir hata oluştu"));
+          showTopSnackBar(Overlay.of(context),
+              const CustomSnackBar.error(message: "Bir hata oluştu"));
         }
       },
       child: ClipRRect(

@@ -47,7 +47,8 @@ class _BeadsPageState extends State<BeadsPage> {
           EasyLoading.show();
         } else if (state is BeadsLoaded) {
           EasyLoading.dismiss();
-          debugPrint("loaded state " + state.beads.length.toString() + " length");
+          debugPrint(
+              "loaded state " + state.beads.length.toString() + " length");
           if (state.beads.isEmpty) {
             setState(() {
               currentBeads = readyBeads[0];
@@ -59,7 +60,8 @@ class _BeadsPageState extends State<BeadsPage> {
           }
         } else if (state is BeadsLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir Hata Oluştu"));
+          showTopSnackBar(Overlay.of(context),
+              const CustomSnackBar.error(message: "Bir Hata Oluştu"));
           setState(() {
             currentBeads = readyBeads[0];
           });
@@ -103,31 +105,41 @@ class _BeadsPageState extends State<BeadsPage> {
                           TopButton(
                               title: "Yeni Zikir Bul",
                               onTap: () async {
-                                debugPrint("Kaydedilecek" + currentBeads!.toString());
+                                debugPrint(
+                                    "Kaydedilecek" + currentBeads!.toString());
                                 //  admobBloc.add(ShowIntersAd(DateTime.now()));
                                 beadsBloc.add(SaveBeads(
                                   beads: currentBeads!,
                                 ));
                                 Beads? selectedBeads = await Navigator.push(
-                                    context, MaterialPageRoute(builder: (context) => const NewBeadsPage()));
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NewBeadsPage()));
 
                                 if (selectedBeads != null) {
-                                  beadsBloc.add(GetSelectedBeadsFromHive(selectedBeads: selectedBeads));
+                                  beadsBloc.add(GetSelectedBeadsFromHive(
+                                      selectedBeads: selectedBeads));
                                 }
                               }),
                           TopButton(
                               title: "Eski Zikirlerin",
                               onTap: () async {
                                 //    admobBloc.add(ShowIntersAd(DateTime.now()));
-                                debugPrint("Kaydedilecek" + currentBeads!.toString());
+                                debugPrint(
+                                    "Kaydedilecek" + currentBeads!.toString());
                                 beadsBloc.add(SaveBeads(
                                   beads: currentBeads!,
                                 ));
                                 Beads? selectedBeads = await Navigator.push(
-                                    context, MaterialPageRoute(builder: (context) => const OldsBeadsPage()));
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const OldsBeadsPage()));
 
                                 if (selectedBeads != null) {
-                                  beadsBloc.add(GetSelectedBeadsFromHive(selectedBeads: selectedBeads));
+                                  beadsBloc.add(GetSelectedBeadsFromHive(
+                                      selectedBeads: selectedBeads));
                                 }
                               })
                         ],
@@ -144,7 +156,8 @@ class _BeadsPageState extends State<BeadsPage> {
                             child: AutoSizeText(
                               currentBeads!.bead!,
                               textAlign: TextAlign.center,
-                              style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.04),
+                              style: themeHelper.titleTextStyleDark.copyWith(
+                                  fontSize: sizeHelper.height! * 0.04),
                             ),
                           ),
                         ),
@@ -162,7 +175,8 @@ class _BeadsPageState extends State<BeadsPage> {
                             child: AutoSizeText(
                               "Anlamı:\n" + currentBeads!.meaning!,
                               textAlign: TextAlign.center,
-                              style: themeHelper.subtitleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.02),
+                              style: themeHelper.subtitleTextStyleDark.copyWith(
+                                  fontSize: sizeHelper.height! * 0.02),
                             ),
                           ),
                         ),
@@ -175,7 +189,8 @@ class _BeadsPageState extends State<BeadsPage> {
                             child: AutoSizeText(
                               currentBeads!.beadedCount.toString(),
                               textAlign: TextAlign.center,
-                              style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.1),
+                              style: themeHelper.titleTextStyleDark
+                                  .copyWith(fontSize: sizeHelper.height! * 0.1),
                             ),
                           ),
                         ),
@@ -194,8 +209,9 @@ class _BeadsPageState extends State<BeadsPage> {
                               child: AutoSizeText(
                                 "Sıfırla",
                                 textAlign: TextAlign.center,
-                                style: themeHelper.titleTextStyleDark
-                                    .copyWith(fontSize: sizeHelper.height! * 0.1, color: Colors.red),
+                                style: themeHelper.titleTextStyleDark.copyWith(
+                                    fontSize: sizeHelper.height! * 0.1,
+                                    color: Colors.red),
                               ),
                             ),
                           ),
@@ -216,7 +232,9 @@ class _BeadsPageState extends State<BeadsPage> {
                             color: themeHelper.onBackgroundDark,
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.black.withOpacity(0.8), blurRadius: 20, offset: const Offset(5, 10)),
+                                  color: Colors.black.withOpacity(0.8),
+                                  blurRadius: 20,
+                                  offset: const Offset(5, 10)),
                             ],
                           ),
                           child: Center(
@@ -225,7 +243,9 @@ class _BeadsPageState extends State<BeadsPage> {
                               child: AutoSizeText(
                                 "Bas",
                                 textAlign: TextAlign.center,
-                                style: themeHelper.subtitleTextStyleLight.copyWith(fontSize: sizeHelper.height! * 0.1),
+                                style: themeHelper.subtitleTextStyleLight
+                                    .copyWith(
+                                        fontSize: sizeHelper.height! * 0.1),
                               ),
                             ),
                           ),

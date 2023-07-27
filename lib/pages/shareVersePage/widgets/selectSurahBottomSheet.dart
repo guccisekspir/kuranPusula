@@ -73,13 +73,16 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
           });
         } else if (state is SurahLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir hata oluştu"));
+          showTopSnackBar(Overlay.of(context),
+              const CustomSnackBar.error(message: "Bir hata oluştu"));
         }
       },
       child: ClipRRect(
         child: BuzzedContainer(
           child: AnimatedContainer(
-            height: MediaQuery.of(context).viewInsets.bottom > 0 ? sizeHelper.height! * 0.8 : sizeHelper.height! * 0.8,
+            height: MediaQuery.of(context).viewInsets.bottom > 0
+                ? sizeHelper.height! * 0.8
+                : sizeHelper.height! * 0.8,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
             ),
@@ -110,13 +113,15 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  shareVerseBloc.add(SurahSelect(selectedSurah: currentSurah));
+                                  shareVerseBloc.add(
+                                      SurahSelect(selectedSurah: currentSurah));
                                   GoRouter.of(context).pop();
 
                                   showModalBottomSheet(
                                       context: context,
                                       isScrollControlled: true,
-                                      backgroundColor: themeHelper.surfaceColor.withOpacity(0.3),
+                                      backgroundColor: themeHelper.surfaceColor
+                                          .withOpacity(0.3),
                                       builder: (context) {
                                         return ChangeVerseBottomSheet(
                                           selectedSurah: currentSurah,
@@ -127,7 +132,8 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                                   child: Container(
                                     height: sizeHelper.height! * 0.1,
                                     width: sizeHelper.width! * 0.95,
-                                    color: themeHelper.backgroundColor.withOpacity(0.3),
+                                    color: themeHelper.backgroundColor
+                                        .withOpacity(0.3),
                                     child: Row(
                                       children: [
                                         Container(
@@ -135,47 +141,68 @@ class _ChangeSurahBottomSheetState extends State<ChangeSurahBottomSheet> {
                                           width: sizeHelper.width! * 0.2,
                                           decoration: const BoxDecoration(
                                               image: DecorationImage(
-                                                  image: AssetImage("assets/icons/surah.png"), fit: BoxFit.scaleDown)),
+                                                  image: AssetImage(
+                                                      "assets/icons/surah.png"),
+                                                  fit: BoxFit.scaleDown)),
                                           child: Center(
-                                            child: Text(currentSurah.id.toString()),
+                                            child: Text(
+                                                currentSurah.id.toString()),
                                           ),
                                         ),
                                         SizedBox(
                                           height: sizeHelper.height! * 0.1,
                                           width: sizeHelper.width! * 0.5,
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
-                                                height: sizeHelper.height! * 0.1 * 0.3,
+                                                height: sizeHelper.height! *
+                                                    0.1 *
+                                                    0.3,
                                                 child: AutoSizeText(
                                                   currentSurah.name!,
-                                                  style: themeHelper.titleTextStyleDark.copyWith(
-                                                      fontSize: sizeHelper.height! * 0.03,
-                                                      color: themeHelper.onPrimary),
+                                                  style: themeHelper
+                                                      .titleTextStyleDark
+                                                      .copyWith(
+                                                          fontSize: sizeHelper
+                                                                  .height! *
+                                                              0.03,
+                                                          color: themeHelper
+                                                              .onPrimary),
                                                 ),
                                               ),
                                               SizedBox(
-                                                  height: sizeHelper.height! * 0.1 * 0.2,
+                                                  height: sizeHelper.height! *
+                                                      0.1 *
+                                                      0.2,
                                                   child: AutoSizeText(
-                                                    "Ayet Sayısı :" + currentSurah.verseCount!.toString(),
-                                                    style: themeHelper.subtitleTextStyleDark,
+                                                    "Ayet Sayısı :" +
+                                                        currentSurah.verseCount!
+                                                            .toString(),
+                                                    style: themeHelper
+                                                        .subtitleTextStyleDark,
                                                   )),
                                             ],
                                           ),
                                         ),
                                         const Spacer(),
                                         Padding(
-                                          padding: const EdgeInsets.only(right: 8.0),
+                                          padding:
+                                              const EdgeInsets.only(right: 8.0),
                                           child: SizedBox(
                                             height: sizeHelper.height! * 0.1,
                                             width: sizeHelper.width! * 0.2,
                                             child: Center(
                                                 child: AutoSizeText(
                                               "Seç",
-                                              style: themeHelper.titleTextStyleDark
-                                                  .copyWith(color: themeHelper.secondaryColor),
+                                              style: themeHelper
+                                                  .titleTextStyleDark
+                                                  .copyWith(
+                                                      color: themeHelper
+                                                          .secondaryColor),
                                             )),
                                           ),
                                         ),

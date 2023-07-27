@@ -15,7 +15,9 @@ class DetailedSurahPage extends StatefulWidget {
   final Surah willFetchSurah;
   final bool isFromSheet;
 
-  const DetailedSurahPage({Key? key, required this.willFetchSurah, this.isFromSheet = false}) : super(key: key);
+  const DetailedSurahPage(
+      {Key? key, required this.willFetchSurah, this.isFromSheet = false})
+      : super(key: key);
 
   @override
   State<DetailedSurahPage> createState() => _DetailedSurahPageState();
@@ -33,7 +35,8 @@ class _DetailedSurahPageState extends State<DetailedSurahPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    quranBloc.add(GetSurahDetails(surahId: widget.willFetchSurah.id!, dateTime: DateTime.now()));
+    quranBloc.add(GetSurahDetails(
+        surahId: widget.willFetchSurah.id!, dateTime: DateTime.now()));
   }
 
   @override
@@ -50,20 +53,25 @@ class _DetailedSurahPageState extends State<DetailedSurahPage> {
           });
         } else if (state is DetailedSurahLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir hata oluştu"));
+          showTopSnackBar(Overlay.of(context),
+              const CustomSnackBar.error(message: "Bir hata oluştu"));
         }
       },
       child: Container(
-        height: !widget.isFromSheet ? sizeHelper.height : sizeHelper.height! * 0.8,
+        height:
+            !widget.isFromSheet ? sizeHelper.height : sizeHelper.height! * 0.8,
         width: sizeHelper.width,
         color: themeHelper.backgroundColor,
         child: SafeArea(
           child: Column(
             children: [
               !widget.isFromSheet
-                  ? const Align(alignment: Alignment.centerLeft, child: BackButton())
+                  ? const Align(
+                      alignment: Alignment.centerLeft, child: BackButton())
                   : const SizedBox(),
-              !widget.isFromSheet ? Text(widget.willFetchSurah.name.toString() + " Suresi") : const SizedBox(),
+              !widget.isFromSheet
+                  ? Text(widget.willFetchSurah.name.toString() + " Suresi")
+                  : const SizedBox(),
               detailedSurah != null
                   ? Expanded(
                       child: ListView.builder(

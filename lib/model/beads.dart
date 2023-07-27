@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 part 'beads.g.dart';
 
 @HiveType(typeId: 0)
-class Beads extends Comparable {
+class Beads {
   Beads(
       {this.id,
       this.bead,
@@ -55,8 +55,12 @@ class Beads extends Comparable {
         meaning: json["meaning"] == null ? null : json["meaning"],
         prefCount: json["prefCount"] == null ? null : json["prefCount"],
         beadedCount: json["beadedCount"] == null ? null : json["beadedCount"],
-        createdTime: json["createdTime"] == null ? DateTime.now() : (json["createdTime"]).toDate(), //todo firestore
-        badges: json["badges"] == null ? [0] : List<int>.from(json["badges"].map((x) => x)),
+        createdTime: json["createdTime"] == null
+            ? DateTime.now()
+            : (json["createdTime"]).toDate(), //todo firestore
+        badges: json["badges"] == null
+            ? [0]
+            : List<int>.from(json["badges"].map((x) => x)),
       );
 
   Map<String, dynamic> toMap() => {
@@ -65,7 +69,10 @@ class Beads extends Comparable {
         "meaning": meaning == null ? null : meaning,
         "prefCount": prefCount == null ? null : prefCount,
         "beadedCount": beadedCount == null ? null : beadedCount,
-        "createdTime": createdTime == null ? DateTime.now() : DateTime.now(), //Timestamp.fromDate(createdTime!),
-        "badges": badges == null ? null : List<dynamic>.from(badges.map((x) => x)),
+        "createdTime": createdTime == null
+            ? DateTime.now()
+            : DateTime.now(), //Timestamp.fromDate(createdTime!),
+        "badges":
+            badges == null ? null : List<dynamic>.from(badges.map((x) => x)),
       };
 }

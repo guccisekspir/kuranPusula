@@ -52,7 +52,8 @@ class _QuranPageState extends State<QuranPage> {
             });
           } else if (state is SurahLoadError) {
             EasyLoading.dismiss();
-            showTopSnackBar(context, const CustomSnackBar.error(message: "Bir hata oluştu"));
+            showTopSnackBar(Overlay.of(context),
+                const CustomSnackBar.error(message: "Bir hata oluştu"));
           }
         },
         child: Container(
@@ -72,7 +73,8 @@ class _QuranPageState extends State<QuranPage> {
                   )),
               Text(
                 "Kuran Ayetleri",
-                style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
+                style: themeHelper.titleTextStyleDark
+                    .copyWith(fontSize: sizeHelper.height! * 0.03),
               ),
               surahs != null
                   ? Expanded(
@@ -88,7 +90,10 @@ class _QuranPageState extends State<QuranPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: ((context) => DetailedSurahPage(willFetchSurah: currentSurah))));
+                                        builder: ((context) =>
+                                            DetailedSurahPage(
+                                                willFetchSurah:
+                                                    currentSurah))));
                               },
                               child: Container(
                                 height: sizeHelper.height! * 0.1,
@@ -101,7 +106,9 @@ class _QuranPageState extends State<QuranPage> {
                                       width: sizeHelper.width! * 0.2,
                                       decoration: const BoxDecoration(
                                           image: DecorationImage(
-                                              image: AssetImage("assets/icons/surah.png"), fit: BoxFit.scaleDown)),
+                                              image: AssetImage(
+                                                  "assets/icons/surah.png"),
+                                              fit: BoxFit.scaleDown)),
                                       child: Center(
                                         child: Text(currentSurah.id.toString()),
                                       ),
@@ -110,30 +117,44 @@ class _QuranPageState extends State<QuranPage> {
                                       height: sizeHelper.height! * 0.1,
                                       width: sizeHelper.width! * 0.5,
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            height: sizeHelper.height! * 0.1 * 0.3,
+                                            height:
+                                                sizeHelper.height! * 0.1 * 0.3,
                                             child: AutoSizeText(
                                               currentSurah.name!,
-                                              style: themeHelper.titleTextStyleDark.copyWith(
-                                                  fontSize: sizeHelper.height! * 0.03,
-                                                  color: themeHelper.onBackgroundLight),
+                                              style: themeHelper
+                                                  .titleTextStyleDark
+                                                  .copyWith(
+                                                      fontSize:
+                                                          sizeHelper.height! *
+                                                              0.03,
+                                                      color: themeHelper
+                                                          .onBackgroundLight),
                                             ),
                                           ),
                                           SizedBox(
-                                              height: sizeHelper.height! * 0.1 * 0.2,
+                                              height: sizeHelper.height! *
+                                                  0.1 *
+                                                  0.2,
                                               child: AutoSizeText(
-                                                "Ayet Sayısı :" + currentSurah.verseCount!.toString(),
-                                                style: themeHelper.subtitleTextStyleDark,
+                                                "Ayet Sayısı :" +
+                                                    currentSurah.verseCount!
+                                                        .toString(),
+                                                style: themeHelper
+                                                    .subtitleTextStyleDark,
                                               )),
                                         ],
                                       ),
                                     ),
                                     const Spacer(),
                                     Padding(
-                                      padding: const EdgeInsets.only(right: 8.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 8.0),
                                       child: SizedBox(
                                         height: sizeHelper.height! * 0.1,
                                         width: sizeHelper.width! * 0.2,
@@ -141,7 +162,9 @@ class _QuranPageState extends State<QuranPage> {
                                             child: AutoSizeText(
                                           "Hemen Oku",
                                           style: themeHelper.titleTextStyleDark
-                                              .copyWith(color: themeHelper.secondaryColor),
+                                              .copyWith(
+                                                  color: themeHelper
+                                                      .secondaryColor),
                                         )),
                                       ),
                                     ),

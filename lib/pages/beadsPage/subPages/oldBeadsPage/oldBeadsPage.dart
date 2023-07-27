@@ -43,7 +43,8 @@ class _OldsBeadsPageState extends State<OldsBeadsPage> {
           });
         } else if (state is BeadsLoadError) {
           EasyLoading.dismiss();
-          showTopSnackBar(context, const CustomSnackBar.error(message: "Bir hata oluştu"));
+          showTopSnackBar(Overlay.of(context),
+              const CustomSnackBar.error(message: "Bir hata oluştu"));
         }
       },
       child: Container(
@@ -56,19 +57,22 @@ class _OldsBeadsPageState extends State<OldsBeadsPage> {
               const Align(alignment: Alignment.centerLeft, child: BackButton()),
               Text(
                 "Önceki tespihlerin",
-                style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
+                style: themeHelper.titleTextStyleDark
+                    .copyWith(fontSize: sizeHelper.height! * 0.03),
               ),
               userBeads != null
                   ? Expanded(
                       child: ListView.builder(
                           itemCount: userBeads!.length,
                           itemBuilder: ((context, index) {
-                            return OldBeadWidget(currentBeads: userBeads![index]);
+                            return OldBeadWidget(
+                                currentBeads: userBeads![index]);
                           })),
                     )
                   : Text(
                       "Herhangi bir tespihin bulunmuyor!",
-                      style: themeHelper.titleTextStyleDark.copyWith(color: Colors.red),
+                      style: themeHelper.titleTextStyleDark
+                          .copyWith(color: Colors.red),
                     )
             ],
           ),

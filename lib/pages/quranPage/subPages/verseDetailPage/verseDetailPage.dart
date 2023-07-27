@@ -9,7 +9,8 @@ import 'package:kuranpusula/model/detailedSurah.dart';
 
 class VerseDetailPage extends StatefulWidget {
   final Verse currentVerse;
-  const VerseDetailPage({Key? key, required this.currentVerse}) : super(key: key);
+  const VerseDetailPage({Key? key, required this.currentVerse})
+      : super(key: key);
 
   @override
   State<VerseDetailPage> createState() => _VerseDetailPageState();
@@ -30,8 +31,8 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
   }
 
   initAnan() async {
-    translationsList =
-        await quranApiClient.getTranslations(widget.currentVerse.surahId!, widget.currentVerse.verseNumber!);
+    translationsList = await quranApiClient.getTranslations(
+        widget.currentVerse.surahId!, widget.currentVerse.verseNumber!);
 
     setState(() {
       translationsList;
@@ -60,7 +61,8 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
                 child: AutoSizeText(
                   widget.currentVerse.verse ?? "",
                   textAlign: TextAlign.center,
-                  style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.1),
+                  style: themeHelper.titleTextStyleDark
+                      .copyWith(fontSize: sizeHelper.height! * 0.1),
                 ),
               ),
             ),
@@ -74,7 +76,8 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
                 child: AutoSizeText(
                   widget.currentVerse.transcription ?? "",
                   textAlign: TextAlign.center,
-                  style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.1),
+                  style: themeHelper.titleTextStyleDark
+                      .copyWith(fontSize: sizeHelper.height! * 0.1),
                 ),
               ),
             ),
@@ -87,30 +90,29 @@ class _VerseDetailPageState extends State<VerseDetailPage> {
               child: AutoSizeText(
                 currentTranslations?.text ?? "",
                 textAlign: TextAlign.center,
-                style: themeHelper.titleTextStyleDark
-                    .copyWith(fontSize: sizeHelper.height! * 0.02, color: themeHelper.secondaryColor),
+                style: themeHelper.titleTextStyleDark.copyWith(
+                    fontSize: sizeHelper.height! * 0.02,
+                    color: themeHelper.secondaryColor),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: sizeHelper.width! * 0.25, vertical: 15),
+              padding: EdgeInsets.symmetric(
+                  horizontal: sizeHelper.width! * 0.25, vertical: 15),
               child: DropdownSearch<String>(
-                mode: Mode.BOTTOM_SHEET,
-                showSelectedItems: true,
-                items: translationsList?.map((e) => e.author?.name ?? "").toList() ??
+                items: translationsList
+                        ?.map((e) => e.author?.name ?? "")
+                        .toList() ??
                     [widget.currentVerse.translation?.author?.name ?? ""],
-                dropdownSearchDecoration: const InputDecoration(
-                  labelText: "Çevirmeni Seçin",
-                  hintText: "country in menu mode",
-                ),
-                popupItemDisabled: (String s) => s.startsWith('I'),
                 onChanged: (String? e) {
                   if (e != null) {
                     setState(() {
-                      currentTranslations = translationsList?.firstWhere((element) => element.author?.name == e);
+                      currentTranslations = translationsList
+                          ?.firstWhere((element) => element.author?.name == e);
                     });
                   }
                 },
-                selectedItem: widget.currentVerse.translation?.author?.name ?? "",
+                selectedItem:
+                    widget.currentVerse.translation?.author?.name ?? "",
               ),
             ),
             const Divider(),

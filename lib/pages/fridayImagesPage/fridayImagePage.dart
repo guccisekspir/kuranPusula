@@ -23,9 +23,19 @@ class FridayImagePage extends StatefulWidget {
 class _FridayImagePageState extends State<FridayImagePage> {
   ThemeHelper themeHelper = ThemeHelper();
   SizeHelper sizeHelper = SizeHelper();
-  List<List<String>> imagesList = [fridayImageLinks, niceWordsImageLinks, hadisImageLinks, sacrificialImageLinks];
+  List<List<String>> imagesList = [
+    fridayImageLinks,
+    niceWordsImageLinks,
+    hadisImageLinks,
+    sacrificialImageLinks
+  ];
   List<String> selectedImagesList = fridayImageLinks;
-  List<String> labelNames = ["Cuma Sözleri", "Güzel Sözler", "Hadisler", "Kurban Bayramı"];
+  List<String> labelNames = [
+    "Cuma Sözleri",
+    "Güzel Sözler",
+    "Hadisler",
+    "Kurban Bayramı"
+  ];
   AdmobBloc admobBloc = getIt<AdmobBloc>();
   @override
   Widget build(BuildContext context) {
@@ -47,22 +57,18 @@ class _FridayImagePageState extends State<FridayImagePage> {
             ),
           ),
           AutoSizeText("İstediğin Resmi Paylaş",
-              style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
+              style: themeHelper.titleTextStyleDark
+                  .copyWith(fontSize: sizeHelper.height! * 0.03),
               textAlign: TextAlign.center),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: sizeHelper.width! * 0.2),
             child: DropdownSearch<String>(
-              mode: Mode.MENU,
-              showSelectedItems: true,
               items: labelNames,
-              dropdownSearchDecoration: const InputDecoration(
-                labelText: "Ne paylaşacaksın ?",
-              ),
-              popupItemDisabled: (String s) => s.startsWith('I'),
               onChanged: (String? e) {
                 if (e != null) {
                   setState(() {
-                    selectedImagesList = imagesList[labelNames.indexOf(e)].toSet().toList();
+                    selectedImagesList =
+                        imagesList[labelNames.indexOf(e)].toSet().toList();
                     selectedImagesList.shuffle();
                   });
                   Timer.periodic(const Duration(milliseconds: 300), (timer) {
@@ -84,8 +90,12 @@ class _FridayImagePageState extends State<FridayImagePage> {
                   child: MasonryGridView(
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 20,
-                    gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                    children: selectedImagesList.map((e) => FridayImageWidget(imageURL: e)).toList(),
+                    gridDelegate:
+                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    children: selectedImagesList
+                        .map((e) => FridayImageWidget(imageURL: e))
+                        .toList(),
                   )))
         ],
       )),

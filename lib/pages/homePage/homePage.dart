@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:kuranpusula/blocs/admobBloc/bloc/admob_bloc.dart';
+import 'package:kuranpusula/blocs/todayVerseBloc/bloc/today_verse_bloc.dart';
 import 'package:kuranpusula/helpers/sizeHelper.dart';
 import 'package:kuranpusula/helpers/themeHelper.dart';
 import 'package:kuranpusula/locator.dart';
@@ -46,15 +48,19 @@ class HomePage extends StatelessWidget {
                   ),
                   child: Center(
                     child: AutoSizeText(
-                      'Kuran Pusula',
-                      style: themeHelper.titleTextStyleDark.copyWith(fontSize: sizeHelper.height! * 0.03),
+                      'Menzil Pusula',
+                      style: themeHelper.titleTextStyleDark
+                          .copyWith(fontSize: sizeHelper.height! * 0.03),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
               ],
             ),
-            const TodayVerseContainer(),
+            BlocProvider(
+              create: (context) => TodayVerseBloc(),
+              child: TodayVerseContainer(),
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -66,7 +72,9 @@ class HomePage extends StatelessWidget {
                 child: MasonryGridView(
                   mainAxisSpacing: 20,
                   crossAxisSpacing: 20,
-                  gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  gridDelegate:
+                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2),
                   children: [
                     GestureDetector(
                       onTap: () {
@@ -78,7 +86,10 @@ class HomePage extends StatelessWidget {
                         title: 'Dua ve Zikir',
                         subtitle: 'Zikir yapmaya başla >.',
                         image: 'assets/icons/counter.png',
-                        gradientColors: const [Color(0xff70b2d9), Color(0XFF39e5b6)],
+                        gradientColors: const [
+                          Color(0xff70b2d9),
+                          Color(0XFF39e5b6)
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -91,7 +102,10 @@ class HomePage extends StatelessWidget {
                         title: 'Kuran',
                         subtitle: 'Ayetleri İncele >.',
                         image: 'assets/icons/quran.png',
-                        gradientColors: const [Color(0XFFA182DF), Color(0xffDE99C0)],
+                        gradientColors: const [
+                          Color(0XFFA182DF),
+                          Color(0xffDE99C0)
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -104,7 +118,10 @@ class HomePage extends StatelessWidget {
                         title: 'Ayet Paylaş',
                         subtitle: 'Sosyal Medyada ayet paylaş >.',
                         image: 'assets/icons/verse.png',
-                        gradientColors: const [Color(0XFFdb3445), Color(0xfff71735)],
+                        gradientColors: const [
+                          Color(0XFFdb3445),
+                          Color(0xfff71735)
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -117,7 +134,10 @@ class HomePage extends StatelessWidget {
                         title: 'Cuma Sözleri',
                         subtitle: 'Birbirinden güzel sözler >.',
                         image: 'assets/icons/cuma.png',
-                        gradientColors: const [Color(0XFFeb6b9d), Color(0xffee8c68)],
+                        gradientColors: const [
+                          Color(0XFFeb6b9d),
+                          Color(0xffee8c68)
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -130,7 +150,10 @@ class HomePage extends StatelessWidget {
                         title: 'Dua İste',
                         subtitle: 'Hayır için Dua oku,iste >.',
                         image: 'assets/icons/pray.png',
-                        gradientColors: const [Color(0xff0652c5), Color(0XFF74f2ce)],
+                        gradientColors: const [
+                          Color(0xff0652c5),
+                          Color(0XFF74f2ce)
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -143,7 +166,10 @@ class HomePage extends StatelessWidget {
                         title: 'Kıbleyi Bul',
                         subtitle: 'Kıblenizi bulun >.',
                         image: 'assets/icons/qibla.png',
-                        gradientColors: const [Color(0XFFeb6b9d), Color(0xff36096d)],
+                        gradientColors: const [
+                          Color(0XFFeb6b9d),
+                          Color(0xff36096d)
+                        ],
                       ),
                     ),
                   ],
