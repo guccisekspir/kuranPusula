@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ class QuranApiClient {
     try {
       Response response = await dio.get('surah/$surahNumber');
 
-      DetailedSurah detailedSurahs = DetailedSurah.fromJson(jsonEncode(response.data["data"]));
+      DetailedSurah detailedSurahs =
+          DetailedSurah.fromJson(jsonEncode(response.data["data"]));
       return detailedSurahs;
     } on DioError catch (error) {
       debugPrint(error.toString());
@@ -46,7 +48,20 @@ class QuranApiClient {
     debugPrint("surah" + surahID.toString() + " verse" + verseID.toString());
     Dio dio = Dio(getBaseOption());
 
-    Response response = await dio.get('surah/$surahID/verse/$verseID/translations');
-    return TranslationList.fromJson(jsonEncode(response.data)).translations ?? [];
+    Response response =
+        await dio.get('surah/$surahID/verse/$verseID/translations');
+    return TranslationList.fromJson(jsonEncode(response.data)).translations ??
+        [];
+  }
+
+  Future<(String, String)> getVerseAndSurahName(int surahNumber) async {
+    Dio dio = Dio(getBaseOption());
+
+    int randomVerseNumber = Random().nextInt(10);
+
+    Response response =
+        await dio.get('surah/$surahNumber/verse/$randomVerseNumber');
+    Verse verse = Verse.fromJson(jsonEncode(response.data["data"]));
+    return (verse.translation?.text ?? "", surahNumber.toString());
   }
 }
